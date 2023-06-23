@@ -1,4 +1,4 @@
-clearvars -except K; clc;  
+clear all; clc;  
 
 global Kp v_dc_ref v_ac_ref 
 global Power1 Power2 Power3 
@@ -110,7 +110,6 @@ for k = 1 : length(delta1)
     i_g1(:,k) = [cos(delta1(k)) sin(delta1(k)); -sin(delta1(k)) cos(delta1(k))] * i_g1DQ(k,:)';  % From global to local
     i_g2(:,k) = [cos(delta2(k)) sin(delta2(k)); -sin(delta2(k)) cos(delta2(k))] * i_g2DQ(k,:)';  % From global to local
     i_g3(:,k) = [cos(delta3(k)) sin(delta3(k)); -sin(delta3(k)) cos(delta3(k))] * i_g3DQ(k,:)';  % From global to local
-    
 end
 
 i_g1 = i_g1';
@@ -132,79 +131,26 @@ i_pcc = i_pcc';
 
 %% Display time-domain simulation results
 
-% % 
-% % 
-% figure(1); 
-% plot(t,v_dc); grid on; hold on;
-% %
-% figure(2); 
-% subplot(2,1,1);
-% plot(t,v_pcc(:,1)); grid on; hold on;
-% subplot(2,1,2);
-% plot(t,v_pcc(:,2)); grid on; hold on;
-% %
-% figure(3); 
-% subplot(2,1,1);
-% plot(t,i_pcc(:,1)); grid on; hold on;
-% subplot(2,1,2);
-% plot(t,i_pcc(:,2)); grid on; hold on;
-
 
 figure(14); set(gca,'FontSize',24)
 subplot(3,1,2); set(gca,'FontSize',24)
-plot(t,v_pcc(:,1),'Linewidth',1.5); grid on; hold on; ylabel('v_{pcc_d} (V)');  axis([0.9 1.4 -inf inf]); yticklabels('auto'); xticklabels('auto');
+plot(t,v_pcc(:,1),'Linewidth',1.5); grid on; hold on; ylabel('v_{pcc_d} (V)');  axis([0.9 1.4 -inf inf]); yticklabels('auto'); xticklabels('auto'); set(gca,'FontSize',24)
 subplot(3,1,3); set(gca,'FontSize',24)
-plot(t,v_pcc(:,2),'Linewidth',1.5); grid on; hold on; ylabel('v_{pcc_q} (V)'); xlabel('Time (s)'); axis([0.9 1.4 -inf inf]); yticklabels('auto'); xticklabels('auto');
+plot(t,v_pcc(:,2),'Linewidth',1.5); grid on; hold on; ylabel('v_{pcc_q} (V)'); xlabel('Time (s)'); axis([0.9 1.4 -inf inf]); yticklabels('auto'); xticklabels('auto'); set(gca,'FontSize',24)
 set(gca,'FontSize',24)
 figure(25); set(gca,'FontSize',24)
 subplot(3,1,1); set(gca,'FontSize',24)
-plot(t,v_dc1,'Linewidth',1.5); grid on; hold on; ylabel('v_{dc_1} (V)'); axis([0.9 1.4 -inf inf]); yticklabels('auto'); xticklabels('auto');
+plot(t,v_dc1,'Linewidth',1.5); grid on; hold on; ylabel('v_{dc_1} (V)'); axis([0.9 1.4 -inf inf]); yticklabels('auto'); xticklabels('auto'); set(gca,'FontSize',24)
 subplot(3,1,2); set(gca,'FontSize',24)
-plot(t,v_dc2,'Linewidth',1.5); grid on; hold on; ylabel('v_{dc_2} (V)'); axis([0.9 1.4 -inf inf]); yticklabels('auto'); xticklabels('auto');
+plot(t,v_dc2,'Linewidth',1.5); grid on; hold on; ylabel('v_{dc_2} (V)'); axis([0.9 1.4 -inf inf]); yticklabels('auto'); xticklabels('auto'); set(gca,'FontSize',24)
 subplot(3,1,3); set(gca,'FontSize',24)
-plot(t,v_dc3,'Linewidth',1.5); grid on; hold on; ylabel('v_{dc_3} (V)'); xlabel('Time (s)'); axis([0.9 1.4 -inf inf]); yticklabels('auto'); xticklabels('auto');
+plot(t,v_dc3,'Linewidth',1.5); grid on; hold on; ylabel('v_{dc_3} (V)'); xlabel('Time (s)'); axis([0.9 1.4 -inf inf]); yticklabels('auto'); xticklabels('auto'); set(gca,'FontSize',24)
 set(gca,'FontSize',24)
 
 figure(300); set(gca,'FontSize',24)
 subplot(2,1,1); set(gca,'FontSize',24)
-plot(t,i_g1(:,1), 'Linewidth',1.5); grid on; hold on; ylabel('i_{pcc_d} (A)'); axis([0.9 1.4 -inf inf]); yticklabels('auto'); xticklabels('auto');
+plot(t,i_g1(:,1), 'Linewidth',1.5); grid on; hold on; ylabel('i_{pcc_d} (A)'); axis([0.9 1.4 -inf inf]); yticklabels('auto'); xticklabels('auto'); set(gca,'FontSize',24)
 subplot(2,1,2); set(gca,'FontSize',24)
-plot(t,i_g1(:,2), 'Linewidth',1.5); grid on; hold on; ylabel('i_{pcc_q} (A)'); xlabel('Time (s)'); axis([0.9 1.4 -inf inf]); yticklabels('auto'); xticklabels('auto');
+plot(t,i_g1(:,2), 'Linewidth',1.5); grid on; hold on; ylabel('i_{pcc_q} (A)'); xlabel('Time (s)'); axis([0.9 1.4 -inf inf]); yticklabels('auto'); xticklabels('auto'); set(gca,'FontSize',24)
 set(gca,'FontSize',24)
 
-% figure(15); 
-% subplot(3,1,1);
-% plot(t,v_dc1,'Linewidth',1.5); grid on; hold on; ylabel('v_{dc1} (V)');
-% subplot(3,1,2);
-% plot(t,i_g1(:,1), 'Linewidth',1.5); grid on; hold on; ylabel('i_{g1_d} (A)');
-% subplot(3,1,3); 
-% plot(t,i_g1(:,2), 'Linewidth',1.5); grid on; hold on; ylabel('i_{g1_q} (A)'); xlabel('Time (s)');
-% 
-% figure(24); 
-% subplot(3,1,2);
-% plot(t,v_g2(:,1),'Linewidth',1.5); grid on; hold on; ylabel('v_{g2_d} (V)');
-% subplot(3,1,3);
-% plot(t,v_g2(:,2),'Linewidth',1.5); grid on; hold on; ylabel('v_{g2_q} (V)'); xlabel('Time (s)');
-% 
-% figure(25); 
-% subplot(3,1,1);
-% plot(t,v_dc2,'Linewidth',1.5); grid on; hold on; ylabel('v_{dc} (V)');
-% subplot(3,1,2);
-% plot(t,i_g2(:,1), 'Linewidth',1.5); grid on; hold on; ylabel('i_{g2_d} (A)');
-% subplot(3,1,3); 
-% plot(t,i_g2(:,2), 'Linewidth',1.5); grid on; hold on; ylabel('i_{g2_q} (A)'); xlabel('Time (s)');
-% 
-% 
-% figure(34); 
-% subplot(3,1,2);
-% plot(t,v_g3(:,1),'Linewidth',1.5); grid on; hold on; ylabel('v_{g3_d} (V)');
-% subplot(3,1,3);
-% plot(t,v_g3(:,2),'Linewidth',1.5); grid on; hold on; ylabel('v_{g3_q} (V)'); xlabel('Time (s)');
-% 
-% figure(35); 
-% subplot(3,1,1);
-% plot(t,v_dc3,'Linewidth',1.5); grid on; hold on; ylabel('v_{dc3} (V)');
-% subplot(3,1,2);
-% plot(t,i_g3(:,1), 'Linewidth',1.5); grid on; hold on; ylabel('i_{g3_d} (A)');
-% subplot(3,1,3); 
-% plot(t,i_g3(:,2), 'Linewidth',1.5); grid on; hold on; ylabel('i_{g3_q} (A)'); xlabel('Time (s)');

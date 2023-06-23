@@ -55,7 +55,6 @@ Power2 = 1e6;  % 1 MW
 Power3 = 1e6;  % 1 MW
 Power  = Power1 + Power2 + Power3;
 
-
 v_dc_ref = 1100;
 v_ac_ref = 563;
 C_dc = 22e-3;
@@ -76,7 +75,6 @@ Vamp = 563;
 Kp_PLL = 2*4.6 /PLL_Tsettle;
 Ti_PLL = PLL_Tsettle*(PLL_D^2) / 2.3;
 Ki_PLL = Kp_PLL/Ti_PLL;
-
 
 Kp_PLL = Kp_PLL / Vamp;
 Ki_PLL = Ki_PLL / Vamp;
@@ -178,7 +176,7 @@ dx2 = [ di_c2 ; dv_dc2 ; dphi_dc2 ; ddelta2 ; dphi_q2 ; dv_cc2 ];
 
 %% Equations Converter 3
 
-iq_ref3 = 0;
+iq_ref3 = -500;
 Tdelta3 = [cos(delta3) sin(delta3); -sin(delta3) cos(delta3)]; % from DQ to dq
 
 v_g3 = Kp*(i_c3-Tdelta3*i_g3DQ) + v_cc3;

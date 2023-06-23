@@ -126,8 +126,6 @@ dv_cc2   = -Ki*Tdelta2*i_g2DQ + Ki*i_c2;
 v_g2DQ = Tdelta2'*v_g2;
 
 dx2 = [ di_c2 ; dv_dc2 ; dphi_dc2 ; ddelta2 ; dphi_q2 ; dv_cc2 ];
-C2 = [ 0 0 0 0 0 0 1 0;
-       0 0 0 0 0 0 0 1  ];
 
 %% Equations Converter 3
 
@@ -219,7 +217,7 @@ Kp_AC = -25; % AC Voltage droop
 
 % Grid Impedance
 
-SCR_des = 3.4; 
+SCR_des = 2.4; 
 RXratio = 0.3;
 
 Z_g = 690^2 / (Power * SCR_des);
@@ -232,7 +230,7 @@ R_g = RXratio * X_g;
 %% Linearized system
 
 fs = [ dx1 ; dx2 ; dx3 ; dxPN ];
-As = jacobian(fs,x);
+As = jacobian(fs,x); % linearization of the model
 
 %% Static Power Flow analysis - Steady state computation
 
@@ -311,8 +309,6 @@ disp(y(9:12)); % show the static equilibrium point
 disp([ 'Power factor: ', num2str(y(11)/sqrt(y(11)^2 + y(12)^2)) ])
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 
 figure(364); plot(eig(A)/(2*pi),'*', 'MarkerSize',12,'Linewidth',2);  sgrid; hold on;   % eigenvalue analysis
 
